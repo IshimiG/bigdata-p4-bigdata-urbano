@@ -1,0 +1,11 @@
+# Clave de API de AEMET: nunca se sube al repo
+.env
+
+# JSON descargado de AEMET: no se versiona
+data/
+
+# Ruido de Python
+__pycache__/
+*.pyc
+.venv/
+venv/
