@@ -1,11 +1,20 @@
-# Clave de API de AEMET: nunca se sube al repo
+# Datos y credenciales (NO subir nunca)
+# La clave de API de AEMET va en .env
 .env
-
-# JSON descargado de AEMET: no se versiona
+.env.*
+!.env.example
 data/
+docker-volumes/
+*.pem
 
-# Ruido de Python
-__pycache__/
-*.pyc
+# Entornos Python
 .venv/
 venv/
+__pycache__/
+*.pyc
+
+# Notebooks
+.ipynb_checkpoints/
+
+# MkDocs
+site/
