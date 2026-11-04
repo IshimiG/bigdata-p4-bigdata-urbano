@@ -1,0 +1,18 @@
+===== cron_demo 2026-11-04T15:50:22Z =====
+2026-11-04 16:50:23,751 INFO espiras: 1211 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/trafico/espiras/fecha=2026-11-04/espiras_20261104T155023Z.parquet
+2026-11-04 16:50:24,070 INFO tramos: 394 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/trafico/tramos/fecha=2026-11-04/tramos_20261104T155023Z.parquet
+2026-11-04 16:50:24,408 INFO estado: 462 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/trafico/estado/fecha=2026-11-04/estado_20261104T155024Z.parquet
+2026-11-04 16:50:24,531 INFO aire: 11 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/calidad_aire/estaciones/fecha=2026-11-04/aire_20261104T155024Z.parquet
+2026-11-04 16:50:24,674 INFO meteo: 5 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/meteo/municipal/fecha=2026-11-04/meteo_20261104T155024Z.parquet
+2026-11-04 16:50:24,972 INFO aemet: 7 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/aemet/prediccion_46250/fecha=2026-11-04/prediccion_20261104T155024Z.parquet
+2026-11-04 16:50:25,211 INFO aemet_obs: 13 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/aemet/observacion_8416/fecha=2026-11-04/observacion_20261104T155024Z.parquet
+2026-11-04 16:50:25,212 INFO Resumen: 7 ok, 0 fallos []
+===== cron_demo 2026-11-04T16:10:45Z =====
+2026-11-04 17:10:46,171 INFO espiras: 1211 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/trafico/espiras/fecha=2026-11-04/espiras_20261104T161045Z.parquet
+2026-11-04 17:10:46,437 INFO tramos: 394 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/trafico/tramos/fecha=2026-11-04/tramos_20261104T161046Z.parquet
+2026-11-04 17:10:46,807 INFO estado: 462 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/trafico/estado/fecha=2026-11-04/estado_20261104T161046Z.parquet
+2026-11-04 17:10:46,938 INFO aire: 11 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/calidad_aire/estaciones/fecha=2026-11-04/aire_20261104T161046Z.parquet
+2026-11-04 17:10:47,075 INFO meteo: 5 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/meteo/municipal/fecha=2026-11-04/meteo_20261104T161046Z.parquet
+2026-11-04 17:10:47,356 INFO aemet: 7 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/aemet/prediccion_46250/fecha=2026-11-04/prediccion_20261104T161047Z.parquet
+2026-11-04 17:10:47,777 INFO aemet_obs: 12 filas -> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/data/raw/aemet/observacion_8416/fecha=2026-11-04/observacion_20261104T161047Z.parquet
+2026-11-04 17:10:47,777 INFO Resumen: 7 ok, 0 fallos []

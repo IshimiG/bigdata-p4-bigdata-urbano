@@ -3,9 +3,10 @@
 .env
 .env.*
 !.env.example
+# Contraseña de NiFi (docker compose --env-file .env.nifi ...)
+.env.nifi
 data/
 docker-volumes/
-*.pem
 
 # Entornos Python
 .venv/

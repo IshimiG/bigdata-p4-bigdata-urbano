@@ -1,0 +1,18 @@
+=== Crontab propuesta (no se instala) ===
+# espiras: el conteo se refresca ~cada hora -> cada hora
+0 * * * *      /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py espiras >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+# tramos: estado del trafico cambia rapido -> cada 15 min
+*/15 * * * *   /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py tramos >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+# estado: idem, 15 min
+*/15 * * * *   /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py estado >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+# aire: mediciones horarias -> cada hora (minuto 10)
+10 * * * *     /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py aire >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+# meteo municipal: dato horario -> cada hora (minuto 20)
+20 * * * *     /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py meteo >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+# aemet: prediccion diaria, se publica de madrugada -> una vez al dia 06:30
+30 6 * * *     /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py aemet >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+# aemet_obs: observacion convencional, cuota de la API limitada -> cada 6 h
+0 */6 * * *    /home/ishimi/Projects/bigdata-p4-bigdata-urbano/.venv/bin/python /home/ishimi/Projects/bigdata-p4-bigdata-urbano/recolector/recolector.py aemet_obs >> /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log 2>&1
+
+=== Ejecucion unica simulando cron (env -i, PATH minimo) ===
+codigo de salida: 0 (log en /home/ishimi/Projects/bigdata-p4-bigdata-urbano/logs/cron.log)

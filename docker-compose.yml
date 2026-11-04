@@ -1,0 +1,53 @@
+# Apache NiFi de la práctica 4 (Big Data urbano, Valencia): ampliación "ingesta con
+# NiFi" (ver nifi/NOTAS.md).
+#
+# OJO: este fichero DOCUMENTA un contenedor que YA EXISTÍA en el equipo y que se
+# REUTILIZA tal cual: bigdata-nifi (apache/nifi:2.10.0), creado para otro ejercicio
+# desde ~/nifi/docker-compose.yml (proyecto "nifi"). La práctica no lo ha creado ni
+# lo recrea: solo añade su propio grupo de proceso «Espiras de tráfico (capa 208)» y
+# escribe en ~/nifi/datalake/p4_espiras. El servicio de abajo copia su definición,
+# pero sin la contraseña en claro.
+#
+# NO hacer `docker compose up` con este fichero: chocaría con el contenedor existente
+# (mismo container_name y mismo puerto 8443). Se maneja directamente:
+#
+#   docker start bigdata-nifi            # https://localhost:8443/nifi (tarda ~30 s)
+#   python nifi/crear_flujo.py estado    # u otras órdenes, ver nifi/NOTAS.md
+#   python nifi/crear_flujo.py parar     # antes de pararlo, para que no se reanude solo
+#   docker stop bigdata-nifi
+#
+# Solo en un equipo donde bigdata-nifi NO exista serviría para crearlo igual:
+#   docker volume create nifi_nifi-data          # es "external": compose no lo crea
+#   mkdir -p ~/nifi/datalake/p4_espiras          # como usuario normal (uid 1000 = nifi)
+#   docker compose --env-file .env.nifi up -d nifi
+#
+# La contraseña va en .env.nifi (fuera de Git): NIFI_USERNAME=admin y NIFI_PASSWORD=...
+# (12 caracteres como mínimo, lo exige NiFi en modo single-user). Si falta, compose se
+# niega a seguir, así que --env-file hace falta en todos los comandos de compose.
+
+services:
+  nifi:
+    image: apache/nifi:2.10.0
+    container_name: bigdata-nifi
+    ports:
+      # Igual que en ~/nifi: publicado en todas las interfaces del equipo.
+      # NiFi sirve HTTPS con un certificado autofirmado.
+      - "8443:8443"
+    environment:
+      SINGLE_USER_CREDENTIALS_USERNAME: ${NIFI_USERNAME:-admin}
+      SINGLE_USER_CREDENTIALS_PASSWORD: ${NIFI_PASSWORD:?Falta NIFI_PASSWORD. Usa docker compose --env-file .env.nifi ...}
+      # Sin TZ: el contenedor está en UTC. El flujo pasa 'Europe/Madrid' a format()
+      # para que los nombres de fichero lleven la hora local.
+    volumes:
+      # conf/ guarda el flujo (flow.json.gz) de los dos ejercicios, las credenciales
+      # y el certificado de la UI. Es el volumen del proyecto ~/nifi.
+      - nifi-data:/opt/nifi/nifi-current/conf
+      # Único montaje de datos. input/ y output/ son del otro ejercicio; esta práctica
+      # escribe en /datalake/p4_espiras (PutFile). El usuario nifi del contenedor es el
+      # uid 1000, el mismo que el usuario del equipo.
+      - ${HOME}/nifi/datalake:/datalake
+
+volumes:
+  nifi-data:
+    external: true
+    name: nifi_nifi-data
